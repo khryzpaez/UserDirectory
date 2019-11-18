@@ -35,5 +35,5 @@ Desde la terminal ejecutar "php -S localhost:8000" u otro puerto que este dispon
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
