@@ -1,0 +1,18 @@
+{
+  "require": {
+    "illuminate/database": "^6.5",
+    "ixudra/curl": "^6.18",
+    "miladrahimi/phprouter": "4.*",
+    "eftec/bladeone": "^3.31",
+    "inhere/php-validate": "^2.7",
+    "vlucas/phpdotenv": "^3.6"
+  },
+  "autoload": {
+    "classmap": [
+      "app/Models",
+      "app/Classes",
+      "app/Controllers",
+      "app/Middlewares"
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title', 'Registrar'); ?>
+
+<?php $this->startSection('content'); ?>
+ <div class="container">
+ <div class="row justify-content-center">
+ <div class="col-md-8">
+ <div class="card">
+ <div class="card-header">Registrar</div>
+
+ <div class="card-body">
+ <form method="POST" action="/usuarios/crear">
+ <?php if(!empty($errors)): ?>
+ <ul>
+ <?php $__currentLoopData = $errors; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <li><?php echo static::e($error['msg']); ?></li>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </ul>
+ <?php endif; ?>
+ <div class="form-group row">
+ <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+
+ <div class="col-md-6">
+ <input id="name" type="text" class="form-control" name="name"
+ value="<?php echo static::e(isset($data['name']) ? $data['name'] : ''); ?>" required>
+ </div>
+ </div>
+
+ <div class="form-group row">
+ <label for="name" class="col-md-4 col-form-label text-md-right">Documento</label>
+
+ <div class="col-md-6">
+ <input id="document" type="text" class="form-control" name="document"
+ value="<?php echo static::e(isset($data['document']) ? $data['document'] : ''); ?>" required>
+ </div>
+ </div>
+
+ <div class="form-group row">
+ <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail</label>
+
+ <div class="col-md-6">
+ <input id="email" type="email" class="form-control" name="email"
+ value="<?php echo static::e(isset($data['email']) ? $data['email'] : ''); ?>" required>
+ </div>
+ </div>
+
+ <div class="form-group row">
+ <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+
+ <div class="col-md-6">
+ <input id="password" type="password" class="form-control" name="password" required>
+ </div>
+ </div>
+
+
+ <div class="form-group row">
+ <label for="name" class="col-md-4 col-form-label text-md-right">Pais</label>
+
+ <div class="col-md-6">
+ <select id="country_id" class="form-control" name="country_id" required>
+ <option value="">Seleccione</option>
+ <?php $__currentLoopData = \App\Models\Country::get(); $this->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <option value="<?php echo static::e($country->id); ?>" <?php echo static::e(isset($data['country_id']) && $data['country_id'] == $country->id ? 'selected' : ''); ?>><?php echo static::e($country->name); ?></option>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </select>
+ </div>
+ </div>
+
+ <div class="form-group row mb-0">
+ <div class="col-md-6 offset-md-4">
+ <button type="submit" class="btn btn-primary">
+ Enviar
+ </button>
+ </div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+<?php $this->stopSection(); ?>
+<?php if (@$_shouldextend[1]) { echo $this->runChild('layouts.app'); } ?>

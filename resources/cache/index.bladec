@@ -1,0 +1,49 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title', 'Contactos'); ?>
+
+<?php $this->startSection('content'); ?>
+ <div class="container">
+ <div class="row justify-content-center">
+ <div class="col-md-12">
+ <div class="card">
+ <div class="card-header">Contactos</div>
+
+ <div class="card-body">
+ <div class="table-responsive-sm">
+ <table class="table">
+ <thead>
+ <tr>
+ <th scope="col">Cargo</th>
+ <th scope="col">Nombres</th>
+ <th scope="col">Apellidos</th>
+ <th scope="col">Email</th>
+ <th scope="col">Documento</th>
+ <th scope="col">Telefono</th>
+ <th scope="col">Pais</th>
+ <th scope="col">Ciudad</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $contacts; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $contact): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <tr>
+ <td><?php echo static::e($contact->job_title); ?></td>
+ <td><?php echo static::e($contact->first_name); ?></td>
+ <td><?php echo static::e($contact->last_name); ?></td>
+ <td><?php echo static::e($contact->email); ?></td>
+ <td><?php echo static::e($contact->document); ?></td>
+ <td><?php echo static::e($contact->phone_number); ?></td>
+ <td><?php echo static::e($contact->country); ?></td>
+ <td><?php echo static::e($contact->city); ?></td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+<?php $this->stopSection(); ?>
+<?php if (@$_shouldextend[1]) { echo $this->runChild('layouts.app'); } ?>
